@@ -30,7 +30,7 @@ class AchievementPresenter: AnyPresenter {
     var view: AnyView?
     
     func interactorDidFetchAchievements(with result: Result<[Achievement], Error>, title: String) {
-//        view?.setTitle(with: title)
+        view?.setTitle(with: title)
         switch result {
             case .success(let achievements):
                 view?.update(with: achievements)

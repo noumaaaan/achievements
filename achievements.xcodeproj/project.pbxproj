@@ -3,13 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A64B0A426520E4100E7F612 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A64B0A326520E4100E7F612 /* CustomTableViewCell.swift */; };
+		2A64B0A72652103500E7F612 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 2A64B0A62652103500E7F612 /* SDWebImage */; };
+		2A64B0AA2652AD9B00E7F612 /* Stevia in Frameworks */ = {isa = PBXBuildFile; productRef = 2A64B0A92652AD9B00E7F612 /* Stevia */; };
 		8083BB472650ABC100BC27A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083BB462650ABC100BC27A3 /* AppDelegate.swift */; };
 		8083BB492650ABC100BC27A3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083BB482650ABC100BC27A3 /* SceneDelegate.swift */; };
-		8083BB4B2650ABC100BC27A3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083BB4A2650ABC100BC27A3 /* ViewController.swift */; };
 		8083BB502650ABC100BC27A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8083BB4F2650ABC100BC27A3 /* Assets.xcassets */; };
 		8083BB532650ABC100BC27A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8083BB512650ABC100BC27A3 /* LaunchScreen.storyboard */; };
 		8083BB5E2650ABE800BC27A3 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083BB5D2650ABE800BC27A3 /* View.swift */; };
@@ -18,15 +20,13 @@
 		8083BB672650AC0800BC27A3 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083BB662650AC0800BC27A3 /* Entity.swift */; };
 		8083BB6A2650AC1000BC27A3 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083BB692650AC1000BC27A3 /* Router.swift */; };
 		8083BB6F2650AD3200BC27A3 /* achievements.json in Resources */ = {isa = PBXBuildFile; fileRef = 8083BB6E2650AD3200BC27A3 /* achievements.json */; };
-		8083BB732650AE3200BC27A3 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083BB712650AE3200BC27A3 /* CustomTableViewCell.swift */; };
-		8083BB742650AE3200BC27A3 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8083BB722650AE3200BC27A3 /* CustomTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A64B0A326520E4100E7F612 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		8083BB432650ABC100BC27A3 /* achievements.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = achievements.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8083BB462650ABC100BC27A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8083BB482650ABC100BC27A3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8083BB4A2650ABC100BC27A3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8083BB4F2650ABC100BC27A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8083BB522650ABC100BC27A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8083BB542650ABC100BC27A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -36,8 +36,6 @@
 		8083BB662650AC0800BC27A3 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		8083BB692650AC1000BC27A3 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		8083BB6E2650AD3200BC27A3 /* achievements.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = achievements.json; sourceTree = "<group>"; };
-		8083BB712650AE3200BC27A3 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
-		8083BB722650AE3200BC27A3 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +43,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A64B0AA2652AD9B00E7F612 /* Stevia in Frameworks */,
+				2A64B0A72652103500E7F612 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,7 +73,6 @@
 				8083BB5C2650ABE300BC27A3 /* VIPER */,
 				8083BB462650ABC100BC27A3 /* AppDelegate.swift */,
 				8083BB482650ABC100BC27A3 /* SceneDelegate.swift */,
-				8083BB4A2650ABC100BC27A3 /* ViewController.swift */,
 				8083BB4F2650ABC100BC27A3 /* Assets.xcassets */,
 				8083BB512650ABC100BC27A3 /* LaunchScreen.storyboard */,
 				8083BB542650ABC100BC27A3 /* Info.plist */,
@@ -84,8 +83,8 @@
 		8083BB5C2650ABE300BC27A3 /* VIPER */ = {
 			isa = PBXGroup;
 			children = (
-				8083BB6C2650AC8900BC27A3 /* CustomTableView */,
 				8083BB5D2650ABE800BC27A3 /* View.swift */,
+				2A64B0A326520E4100E7F612 /* CustomTableViewCell.swift */,
 				8083BB602650ABF100BC27A3 /* Interactor.swift */,
 				8083BB632650ABF700BC27A3 /* Presenter.swift */,
 				8083BB662650AC0800BC27A3 /* Entity.swift */,
@@ -93,15 +92,6 @@
 				8083BB6E2650AD3200BC27A3 /* achievements.json */,
 			);
 			path = VIPER;
-			sourceTree = "<group>";
-		};
-		8083BB6C2650AC8900BC27A3 /* CustomTableView */ = {
-			isa = PBXGroup;
-			children = (
-				8083BB712650AE3200BC27A3 /* CustomTableViewCell.swift */,
-				8083BB722650AE3200BC27A3 /* CustomTableViewCell.xib */,
-			);
-			path = CustomTableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -120,6 +110,10 @@
 			dependencies = (
 			);
 			name = achievements;
+			packageProductDependencies = (
+				2A64B0A62652103500E7F612 /* SDWebImage */,
+				2A64B0A92652AD9B00E7F612 /* Stevia */,
+			);
 			productName = achievements;
 			productReference = 8083BB432650ABC100BC27A3 /* achievements.app */;
 			productType = "com.apple.product-type.application";
@@ -147,6 +141,10 @@
 				Base,
 			);
 			mainGroup = 8083BB3A2650ABC100BC27A3;
+			packageReferences = (
+				2A64B0A52652103500E7F612 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				2A64B0A82652AD9B00E7F612 /* XCRemoteSwiftPackageReference "Stevia" */,
+			);
 			productRefGroup = 8083BB442650ABC100BC27A3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -163,7 +161,6 @@
 			files = (
 				8083BB6F2650AD3200BC27A3 /* achievements.json in Resources */,
 				8083BB532650ABC100BC27A3 /* LaunchScreen.storyboard in Resources */,
-				8083BB742650AE3200BC27A3 /* CustomTableViewCell.xib in Resources */,
 				8083BB502650ABC100BC27A3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -175,12 +172,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8083BB732650AE3200BC27A3 /* CustomTableViewCell.swift in Sources */,
 				8083BB6A2650AC1000BC27A3 /* Router.swift in Sources */,
 				8083BB642650ABF700BC27A3 /* Presenter.swift in Sources */,
+				2A64B0A426520E4100E7F612 /* CustomTableViewCell.swift in Sources */,
 				8083BB5E2650ABE800BC27A3 /* View.swift in Sources */,
 				8083BB672650AC0800BC27A3 /* Entity.swift in Sources */,
-				8083BB4B2650ABC100BC27A3 /* ViewController.swift in Sources */,
 				8083BB612650ABF100BC27A3 /* Interactor.swift in Sources */,
 				8083BB472650ABC100BC27A3 /* AppDelegate.swift in Sources */,
 				8083BB492650ABC100BC27A3 /* SceneDelegate.swift in Sources */,
@@ -377,6 +373,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2A64B0A52652103500E7F612 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.11.1;
+			};
+		};
+		2A64B0A82652AD9B00E7F612 /* XCRemoteSwiftPackageReference "Stevia" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/freshOS/Stevia.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2A64B0A62652103500E7F612 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2A64B0A52652103500E7F612 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		2A64B0A92652AD9B00E7F612 /* Stevia */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2A64B0A82652AD9B00E7F612 /* XCRemoteSwiftPackageReference "Stevia" */;
+			productName = Stevia;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8083BB3B2650ABC100BC27A3 /* Project object */;
 }

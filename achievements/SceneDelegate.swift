@@ -16,11 +16,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let router = AchievementRouter.start()
-        let intial = router.entry
-        
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = intial
+        window.rootViewController = UINavigationController(rootViewController: AchievementRouter.start().entry!)
         self.window = window
         window.makeKeyAndVisible()
     }
