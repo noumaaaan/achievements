@@ -11,10 +11,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        UINavigationBar.appearance().barTintColor = UIColor(red: 105/255.0, green: 54/255.0, blue: 206/255.0, alpha: 1.0)
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().tintColor = .white
         
         let window = UIWindow(windowScene: windowScene)
         window.rootViewController = UINavigationController(rootViewController: AchievementRouter.start().entry!)

@@ -6,68 +6,167 @@
 //
 
 import UIKit
+import Stevia
 import SDWebImage
 
 class CustomTableViewCell: UITableViewCell {
     
-    var backgroundImage = UIImageView()
-    var level = UILabel()
+    static let identifier = "CustomTableViewCell"
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        addSubview(backgroundImage)
-        
-        setUpBackgroundImage()
+        setupFieldsAndConstraints()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func setupFieldsAndConstraints() {
+        subviews {
+            backgroundImage
+            circle
+            levelLabel
+            levelValueLabel
+            progress
+            leftLabel
+            rightLabel
+        }
+        setupBackgroundImage()
+        setupCircle()
+        setupLevelLabel()
+        setupLevelValueLabel()
+        setupProgressBar()
+        setupLeftLabel()
+        setupRightLabel()
     }
     
-    func setUpBackgroundImage() {
-        backgroundImage.layer.cornerRadius = 5
-        backgroundImage.clipsToBounds = true
-        
-        backgroundImage.translatesAutoresizingMaskIntoConstraints = false
-        backgroundImage.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        backgroundImage.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        backgroundImage.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        backgroundImage.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+    var backgroundImage: UIImageView = {
+        let image = UIImageView()
+        return image
+    }()
+    
+    var circle: UIImageView = {
+        let cir = UIImageView()
+        cir.image = UIImage(named: "round")
+        return cir
+    }()
+    
+    var levelLabel: UILabel = {
+        let level = UILabel()
+        return level
+    }()
+    
+    var levelValueLabel: UILabel = {
+       let level = UILabel()
+        return level
+    }()
+    
+    var progress: UIProgressView = {
+        let progress = UIProgressView()
+        return progress
+    }()
+    
+    var leftLabel: UILabel = {
+        let left = UILabel()
+        return left
+    }()
+    
+    var rightLabel: UILabel = {
+        let right = UILabel()
+        return right
+    }()
+    
+    func setupBackgroundImage() {
+        backgroundImage.style { b in
+            b.layer.cornerRadius = 10
+            b.clipsToBounds = true
+            b.Top == 10
+            b.Bottom == 10
+            b.Left == 20
+            b.Right == 20
+        }
     }
     
+    func setupCircle() {
+        circle.style { c in
+            c.Top == 42
+            c.size(110)
+            c.centerHorizontally()
+        }
+    }
     
+    func setupLevelLabel() {
+        levelLabel.style { l in
+            l.textAlignment = .center
+            l.text = "Level"
+            l.Top == 60
+            l.Left == 50
+            l.Right == 50
+        }
+    }
     
+    func setupLevelValueLabel() {
+        levelValueLabel.style { l in
+            l.textAlignment = .center
+            l.font = UIFont.boldSystemFont(ofSize: 55)
+            l.text = "1"
+            l.Top == 75
+            l.Left == 50
+            l.Right == 50
+        }
+    }
     
+    func setupProgressBar() {
+        progress.style { p in
+            p.progressViewStyle = .bar
+            p.layer.cornerRadius = 3
+            p.clipsToBounds = true
+            p.transform = CGAffineTransform(scaleX: 1, y: 2.5)
+            p.trackTintColor = .white
+            p.tintColor = .systemGreen
+            p.Top == 185
+            p.Left == 40
+            p.Right == 40
+        }
+    }
+    
+    func setupLeftLabel() {
+        leftLabel.style { l in
+            l.textAlignment = .left
+            l.textColor = .white
+            l.Top == 195
+            l.Left == 40
+            l.font = UIFont.boldSystemFont(ofSize: 14)
+        }
+    }
+    
+    func setupRightLabel() {
+        rightLabel.style { l in
+            l.textAlignment = .right
+            l.textColor = .white
+            l.Top == 195
+            l.Right == 40
+            l.font = UIFont.boldSystemFont(ofSize: 14)
+        }
+    }
     
     func setValues(achieve: Achievement) {
         backgroundImage.sd_setImage(with: URL(string: achieve.bg_image_url), placeholderImage: nil, options: [.progressiveLoad])
-        level.text = String(achieve.progress)
+        levelValueLabel.text = achieve.level
+        progress.setProgress(Float(Float(achieve.progress)/Float(achieve.total)), animated: true)
+        leftLabel.text = "\(achieve.progress)pts"
+        rightLabel.text = "\(achieve.total)pts"
     }
     
     func disableFields(achieve: Achievement) {
         backgroundImage.alpha = 0.5
+        circle.alpha = 0.8
+        levelLabel.isEnabled = false
+        levelValueLabel.isEnabled = false
+        progress.alpha = 0.5
+        leftLabel.alpha = 0.8
+        rightLabel.alpha = 0.8
     }
     
-    
-    func configureLevelLabel() {
-        level.numberOfLines = 0
-        level.adjustsFontSizeToFitWidth = true
-    }
-    
-    func setImageConstraints() {
-        backgroundImage.translatesAutoresizingMaskIntoConstraints = false
-        backgroundImage.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        backgroundImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12).isActive = true
-        backgroundImage.heightAnchor.constraint(equalToConstant: 80).isActive = true
-        backgroundImage.widthAnchor.constraint(equalTo: backgroundImage.heightAnchor, multiplier: 16/9).isActive = true
-    }
-    
-    func setLabelConstraints() {
-        level.translatesAutoresizingMaskIntoConstraints = false
-        level.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        level.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
-        level.heightAnchor.constraint(equalToConstant: 80).isActive = true
-        level.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12).isActive = true
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
 }

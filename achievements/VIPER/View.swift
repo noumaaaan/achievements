@@ -22,6 +22,7 @@ class AchievementsView: UIViewController, AnyView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navBarButtons()
         configureTableView()
         view.addSubview(label)
     }
@@ -50,6 +51,7 @@ class AchievementsView: UIViewController, AnyView {
         view.addSubview(tableView)
         setTableViewDelegates()
         tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "CustomTableViewCell")
+        tableView.separatorColor = UIColor.clear
     }
     
     func setTableViewDelegates() {
@@ -77,6 +79,11 @@ class AchievementsView: UIViewController, AnyView {
     func setTitle(with title: String) {
         self.title = title
     }
+    
+    func navBarButtons() {        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "back"))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "info"))
+    }
    
 }
 
@@ -88,27 +95,15 @@ extension AchievementsView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell") as! CustomTableViewCell
-        let achieve = achievements[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier) as! CustomTableViewCell
+        cell.setValues(achieve: achievements[indexPath.row])
         
-       
-        
-        cell.setValues(achieve: achieve)
-        
-        if (!achieve.accessible) {
-            cell.disableFields(achieve: achieve)
+        if (!achievements[indexPath.row].accessible) {
+            cell.isUserInteractionEnabled = false
+            cell.disableFields(achieve: achievements[indexPath.row])
         }
         
         return cell
-        
-        
-//        let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier, for: indexPath) as! CustomTableViewCell
-//        cell.configure(levelString: "Level",
-//                         levelNum: achievements[indexPath.row].level,
-//                         prog: Float(achievements[indexPath.row].progress/achievements[indexPath.row].total),
-//                         left: String(achievements[indexPath.row].progress),
-//                         right: String(achievements[indexPath.row].total))
-//        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

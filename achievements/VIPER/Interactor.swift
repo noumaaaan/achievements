@@ -13,15 +13,12 @@ protocol AnyInteractor {
 }
 
 class AchievementInteractor: AnyInteractor {
-    
     var presenter: AnyPresenter?
     
     func getAchievements() {
-        
         let filename = "achievements"
         
         if let path = Bundle.main.path(forResource: filename, ofType: "json") {
-            
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
                 let jsonData = try JSONDecoder().decode(Response.self, from: data)
