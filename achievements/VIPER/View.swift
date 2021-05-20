@@ -7,16 +7,18 @@
 
 import Foundation
 import UIKit
+import Stevia
 
 protocol AnyView {
     var presenter: AnyPresenter? { get set }
     
     func update(with achievments: [Achievement])
-    func update(with error: String)
+    func displayError(with error: String)
     func setTitle(with title: String)
 }
 
 class AchievementsView: UIViewController, AnyView {
+    
     var presenter: AnyPresenter?
     var achievements: [Achievement] = []
     
@@ -24,14 +26,11 @@ class AchievementsView: UIViewController, AnyView {
         super.viewDidLoad()
         navBarButtons()
         configureTableView()
-        view.addSubview(label)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds
-        label.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
-        label.center = view.center
     }
     
     let tableView: UITableView = {
@@ -40,17 +39,10 @@ class AchievementsView: UIViewController, AnyView {
         return table
     }()
     
-    var label: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.isHidden = true
-        return label
-    }()
-    
     func configureTableView() {
         view.addSubview(tableView)
         setTableViewDelegates()
-        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "CustomTableViewCell")
+        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: CustomTableViewCell.identifier)
         tableView.separatorColor = UIColor.clear
     }
     
@@ -67,12 +59,15 @@ class AchievementsView: UIViewController, AnyView {
         }
     }
     
-    func update(with error: String) {
+    func displayError(with error: String) {
+        self.achievements = []
+        self.tableView.isHidden = true
+        let alert = UIAlertController(title: "Error", message: "Something went wrong", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
         DispatchQueue.main.async {
-            self.achievements = []
-            self.label.text = error
-            self.tableView.isHidden = true
-            self.label.isHidden = false
+            self.title = "Error"
+            self.view.backgroundColor = .white
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
@@ -84,7 +79,6 @@ class AchievementsView: UIViewController, AnyView {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "back"))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "info"))
     }
-   
 }
 
 extension AchievementsView: UITableViewDelegate, UITableViewDataSource {
@@ -94,7 +88,6 @@ extension AchievementsView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier) as! CustomTableViewCell
         cell.setValues(achieve: achievements[indexPath.row])
         
@@ -102,7 +95,6 @@ extension AchievementsView: UITableViewDelegate, UITableViewDataSource {
             cell.isUserInteractionEnabled = false
             cell.disableFields(achieve: achievements[indexPath.row])
         }
-        
         return cell
     }
     

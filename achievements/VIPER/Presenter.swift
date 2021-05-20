@@ -7,16 +7,13 @@
 
 import Foundation
 
-enum FetchError: Error {
-    case failed
-}
-
 protocol AnyPresenter {
     var router: AnyRouter? { get set }
     var interactor: AnyInteractor? { get set }
     var view: AnyView? { get set }
     
-    func interactorDidFetchAchievements(with result: Result<[Achievement], Error>, title: String)
+    func interactorDidFetchAchievements(with result: [Achievement], title: String)
+    func showError(error: String)
 }
 
 class AchievementPresenter: AnyPresenter {
@@ -29,13 +26,13 @@ class AchievementPresenter: AnyPresenter {
     }
     var view: AnyView?
     
-    func interactorDidFetchAchievements(with result: Result<[Achievement], Error>, title: String) {
+    func interactorDidFetchAchievements(with result: [Achievement], title: String) {
         view?.setTitle(with: title)
-        switch result {
-            case .success(let achievements):
-                view?.update(with: achievements)
-            case .failure:
-                view?.update(with: "Something went wrong")
-        }
+        
+        view?.update(with: result)
+    }
+    
+    func showError(error: String) {
+        view?.displayError(with: error)
     }
 }

@@ -26,13 +26,13 @@ class AchievementInteractor: AnyInteractor {
                 
                 if (jsonData.success && jsonData.status == 200) {
                     let entities = jsonData.achievements
-                    self.presenter?.interactorDidFetchAchievements(with: .success(entities), title: title)
+                    self.presenter?.interactorDidFetchAchievements(with: entities, title: title)
                 } else {
-                    self.presenter?.interactorDidFetchAchievements(with: .failure(FetchError.failed), title: title)
+                    print("Error decoding JSON data")
                 }
-                
             } catch {
-                self.presenter?.interactorDidFetchAchievements(with: .failure(error), title: "")
+                self.presenter?.showError(error: "Something went wrong")
+                print("Something went wrong")
             }
             
         } else {
